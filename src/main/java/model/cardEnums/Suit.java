@@ -1,4 +1,4 @@
-package model;
+package model.cardEnums;
 
 public enum Suit {
   DIAMONDS("Diamonds"),

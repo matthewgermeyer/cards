@@ -1,8 +1,12 @@
-package model;
+package model.components;
 
-import static java.lang.Math.*;
-
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
+import model.cardEnums.Rank;
+import model.cardEnums.Suit;
 
 public class Card {
 
@@ -56,23 +60,27 @@ public class Card {
     return sb.toString();
   }
 
-  public static void deck() {
-    int count = 0;
+  public static LinkedList<Card> shuffledDeck() {
+    List<Card> completedDeck = new LinkedList<>();
+    LinkedList<Card> shuffled;
     for (Suit s : Suit.values()) {
       for (Rank r : Rank.values()) {
 
         Card c = new Card(s.toString(), r.getRank());
-        System.out.println(c.toString());
-        count++;
+        completedDeck.add(c);
       }
     }
-    System.out.printf("Total cards: %s%n ", count);
+    Collections.shuffle(completedDeck);
+    shuffled = new LinkedList<>(completedDeck);
+    return shuffled;
+
   }
 
-  public static void dieRoll() {
-    Integer roll = (int)floor(random() * 6) + 1;
-
-    System.out.println(roll);
+  public static List<Card> dealTwo(LinkedList<Card> deck) {
+    List<Card> yourHand = new ArrayList<>();
+    yourHand.add(deck.pollFirst());
+    yourHand.add(deck.pollFirst());
+    return yourHand;
   }
 
   public static void dealTwo() {
