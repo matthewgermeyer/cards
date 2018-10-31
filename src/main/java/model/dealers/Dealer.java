@@ -1,5 +1,7 @@
 package model.dealers;
 
+import java.util.ArrayList;
+import java.util.List;
 import model.components.Die;
 import model.games.Craps;
 
@@ -7,7 +9,7 @@ public class Dealer {
 
     private Long id;
 
-    private String betLog;
+    private List<Integer> resultLog;
     private Die dice;
     private Craps game;
     private int point;
@@ -20,7 +22,7 @@ public class Dealer {
 
     public Dealer(Craps game) {
 
-        this.betLog = new String("");
+        this.resultLog = new ArrayList<>();
         this.dice = new Die("craps");
         this.game = new Craps(dice);
 
@@ -36,12 +38,12 @@ public class Dealer {
         this.id = id;
     }
 
-    public String getBetLog() {
-        return betLog;
+    public List<Integer> getBetLog() {
+        return resultLog;
     }
 
-    public void setBetLog(String betLog) {
-        this.betLog = betLog;
+    public void setBetLog(List<Integer> resultLog) {
+        this.resultLog = resultLog;
     }
 
     public Craps getGame() {
